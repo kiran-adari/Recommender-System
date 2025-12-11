@@ -49,28 +49,47 @@ u.item
 
 ---
 
-# 🧠 Machine Learning Method
+## 🧠 Machine Learning Method
 
-### ✔ 1. Build User–Item Rating Matrix  
-A sparse matrix \( R[u,i] \) is created where each row is a user and each column is a movie.
+### ✔ 1. Build User–Item Rating Matrix
+A sparse matrix R[u, i] is created where each row represents a user and each column represents a movie.
 
-### ✔ 2. Compute User–User Cosine Similarity  
+---
 
-\[
-\text{sim}(u,v) = \frac{R_u \cdot R_v}{\|R_u\|\|R_v\|}
-\]
+### ✔ 2. Compute User–User Cosine Similarity
 
-### ✔ 3. Predict Missing Ratings  
+Cosine similarity between two users u and v is computed as:
 
-\[
-\hat{r}_{u,i} =
-\frac{\sum_{v \in N(u)}\text{sim}(u,v)\, r_{v,i}}
-{\sum_{v \in N(u)} |\text{sim}(u,v)|}
-\]
+sim(u, v) = (Rᵤ · Rᵥ) / ( ||Rᵤ|| × ||Rᵥ|| )
 
-### ✔ 4. Recommend Highest Predicted Movies  
-The backend returns the top movies with the highest predicted scores.
 
+Where:
+- `Rᵤ` and `Rᵥ` are rating vectors
+- `·` denotes dot product
+- `||Rᵤ||` is the vector magnitude of user u
+
+---
+
+### ✔ 3. Predict Missing Ratings
+
+Predicted rating for user `u` on movie `i`:
+
+r̂(u, i) = Σ[ sim(u, v) × r(v, i) ] / Σ[ |sim(u, v)| ]
+
+
+The sum is taken over all neighbors v of user u who rated movie i.
+
+---
+
+### ✔ 4. Recommend Highest Predicted Movies
+Movies with the highest predicted ratings are returned as recommendations.
+
+**
+Cosine Similarity**
+sim(u, v) = (Rᵤ · Rᵥ) / ( ||Rᵤ|| × ||Rᵥ|| )
+
+**Predicted Rating**
+r̂(u, i) = Σ[ sim(u, v) × r(v, i) ] / Σ[ |sim(u, v)| ]
 ---
 
 # ⚙️ Backend Setup (FastAPI)
