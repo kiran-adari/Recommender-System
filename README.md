@@ -121,25 +121,30 @@ http://localhost:5173
 
 ---
 
-# 🧭 Folder Structure
+```
 Recommender-System/
-|
-  |-----backend/
-| |------ main.py/
-| |------ recommender.py
-| |------ attack_experiment.py
-| |------ metrics_experiment.py
-| |------ u.data (download it from online)
-| |------ u.item (download it from online)
-|
-| |-----frontend/
-| |------ src/
-| |------ App.jsx
-| |------ index.css
-| |------ main.jsx
-| |------ public/
-| |------ package.json
-| |------ vite.config.js
+│
+├── backend/
+│   ├── main.py
+│   ├── recommender.py
+│   ├── attack_experiment.py
+│   ├── metrics_experiment.py
+│   ├── u.data   (download separately)
+│   └── u.item   (download separately)
+│
+└── frontend/
+    ├── src/
+    │   ├── App.jsx
+    │   ├── index.css
+    │   └── main.jsx
+    │
+    ├── public/
+    │   └── vite.svg
+    │
+    ├── package.json
+    └── vite.config.js
+```
+
 
 
 ---
